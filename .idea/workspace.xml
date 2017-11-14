@@ -5,7 +5,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ok_history" afterPath="$PROJECT_DIR$/.ok_history" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scheme.py" afterPath="$PROJECT_DIR$/scheme.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/06.py" afterPath="$PROJECT_DIR$/tests/06.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scheme_reader.py" afterPath="$PROJECT_DIR$/scheme_reader.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/07.py" afterPath="$PROJECT_DIR$/tests/07.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +27,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scheme.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="scheme.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scheme.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="228" column="35" lean-forward="true" selection-start-line="228" selection-start-column="35" selection-end-line="228" selection-end-column="35" />
+            <state relative-caret-position="759">
+              <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scheme_reader.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scheme_reader.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="121" column="55" lean-forward="false" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -50,6 +61,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/scheme.py" />
+        <option value="$PROJECT_DIR$/scheme_reader.py" />
       </list>
     </option>
   </component>
@@ -187,8 +199,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scheme.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="228" column="35" lean-forward="true" selection-start-line="228" selection-start-column="35" selection-end-line="228" selection-end-column="35" />
+        <state relative-caret-position="759">
+          <caret line="245" column="21" lean-forward="false" selection-start-line="245" selection-start-column="21" selection-end-line="245" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scheme_reader.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="121" column="55" lean-forward="false" selection-start-line="121" selection-start-column="55" selection-end-line="121" selection-end-column="55" />
           <folding />
         </state>
       </provider>
