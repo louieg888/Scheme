@@ -297,7 +297,7 @@ def do_and_form(expressions, env):
     if len(expressions) == 0:
         return True
     elif len(expressions) == 1:
-        return expressions.first
+        return scheme_eval(expressions.first, env)
     elif scheme_falsep(scheme_eval(expressions.first, env)):
         return False
     else:
