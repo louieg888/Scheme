@@ -296,19 +296,12 @@ def do_and_form(expressions, env):
     # BEGIN PROBLEM 13
     if len(expressions) == 0:
         return True
-    print("exprs: " + str(expressions))
-    print(expressions.second)
-    print(expressions.second.second)
-    while expressions.second is not nil:
-        expr = expressions.first
-        evaled_expr = scheme_eval(expr, env)
-        if scheme_truep(evaled_expr) == False:
-            return evaled_expr
-        expressions = expressions.second
-
-    lastExpr = expressions[-1]
-    lastExprEvaled = scheme_eval(expr, env)
-    return lastExprEvaled
+    elif len(expressions) == 1:
+        return expressions.first
+    elif scheme_falsep(scheme_eval(expressions.first, env)):
+        return False
+    else:
+        return do_and_form(expressions.second, env)
     # END PROBLEM 13
 
 def do_or_form(expressions, env):
@@ -316,22 +309,13 @@ def do_or_form(expressions, env):
     # BEGIN PROBLEM 13
     if len(expressions) == 0:
         return False
-    print(expressions)
     while expressions is not nil:
         expr = expressions.first
         evaled_expr = scheme_eval(expr, env)
-        if scheme_truep(evaled_expr) == True:
+        if scheme_truep(evaled_expr):
             return evaled_expr
         expressions = expressions.second
-
-    lastExpr = expressions[-1]
-    lastExprEvaled = scheme_eval(expr, env)
-    return lastExprEvaled
-
-    # print(expressions)
-    # print(env)
-
-    # print(scheme_eval(expressions, env))
+    return False
     # END PROBLEM 13
 
 def do_cond_form(expressions, env):
