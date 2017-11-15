@@ -147,15 +147,11 @@ def read_tail(src):
         elif src.current() == '.':
             # BEGIN PROBLEM 2
             src.remove_front()
-            # print("before: " + str(src.current()))
-            # returnVal = read_tail(src).first
-            returnVal = scheme_read(src)
-            # print("after: " + str(src.current()))
+            rest = scheme_read(src)
             if src.current() != ')':
                 raise SyntaxError
-
             src.remove_front()
-            return returnVal
+            return rest
             # END PROBLEM 2
         else:
             # BEGIN PROBLEM 1
