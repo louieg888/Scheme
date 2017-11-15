@@ -107,7 +107,13 @@ class Frame:
         """
         child = Frame(self) # Create a new child with self as the parent
         # BEGIN PROBLEM 11
-        "*** YOUR CODE HERE ***"
+        while formals is not nil and vals is not nil:
+            child.bindings[formals.first] = vals.first
+            formals = formals.second
+            vals = vals.second
+
+        if (formals is not nil or vals is not nil):
+            raise SchemeError
         # END PROBLEM 11
         return child
 
@@ -189,7 +195,12 @@ class LambdaProcedure(UserDefinedProcedure):
         """Make a frame that binds my formal parameters to ARGS, a Scheme list
         of values, for a lexically-scoped call evaluated in environment ENV."""
         # BEGIN PROBLEM 12
-        "*** YOUR CODE HERE ***"
+        # env.make_child_frame(
+        return self.env.make_child_frame(self.formals, args)
+        print(args)
+        print(env)
+        print(self.body)
+        print(self.formals)
         # END PROBLEM 12
 
     def __str__(self):
@@ -283,13 +294,44 @@ def do_if_form(expressions, env):
 def do_and_form(expressions, env):
     """Evaluate a (short-circuited) and form."""
     # BEGIN PROBLEM 13
-    "*** YOUR CODE HERE ***"
+    if len(expressions) == 0:
+        return True
+    print("exprs: " + str(expressions))
+    print(expressions.second)
+    print(expressions.second.second)
+    while expressions.second is not nil:
+        expr = expressions.first
+        evaled_expr = scheme_eval(expr, env)
+        if scheme_truep(evaled_expr) == False:
+            return evaled_expr
+        expressions = expressions.second
+
+    lastExpr = expressions[-1]
+    lastExprEvaled = scheme_eval(expr, env)
+    return lastExprEvaled
     # END PROBLEM 13
 
 def do_or_form(expressions, env):
     """Evaluate a (short-circuited) or form."""
     # BEGIN PROBLEM 13
-    "*** YOUR CODE HERE ***"
+    if len(expressions) == 0:
+        return False
+    print(expressions)
+    while expressions is not nil:
+        expr = expressions.first
+        evaled_expr = scheme_eval(expr, env)
+        if scheme_truep(evaled_expr) == True:
+            return evaled_expr
+        expressions = expressions.second
+
+    lastExpr = expressions[-1]
+    lastExprEvaled = scheme_eval(expr, env)
+    return lastExprEvaled
+
+    # print(expressions)
+    # print(env)
+
+    # print(scheme_eval(expressions, env))
     # END PROBLEM 13
 
 def do_cond_form(expressions, env):
