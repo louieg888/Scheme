@@ -332,6 +332,15 @@ def do_cond_form(expressions, env):
         if scheme_truep(test):
             # BEGIN PROBLEM 14
             "*** YOUR CODE HERE ***"
+            clause_second = clause.second
+            if clause_second is nil:
+                return test
+            elif len(clause_second) > 1:
+                return eval_all(clause_second, env)
+            elif len(clause_second) == 1:
+                return scheme_eval(clause_second.first, env)
+            else:
+                return None
             # END PROBLEM 14
         expressions = expressions.second
 
