@@ -104,7 +104,7 @@
          (let ((values (cadr expr))
                (body   (cddr expr)))
 	   ; BEGIN PROBLEM 19
-	   (cons (cons 'lambda (cons (car (zip values)) (let-to-lambda (car body)))) (map let-to-lambda (car (zip values))))
+	   (cons (cons 'lambda (list (car (zip values)) (let-to-lambda (car body)))) (map let-to-lambda (cdr (zip values))))
            ; END PROBLEM 19
            ))
         (else
