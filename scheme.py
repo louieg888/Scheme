@@ -195,7 +195,6 @@ class LambdaProcedure(UserDefinedProcedure):
         """Make a frame that binds my formal parameters to ARGS, a Scheme list
         of values, for a lexically-scoped call evaluated in environment ENV."""
         # BEGIN PROBLEM 12
-        # env.make_child_frame(
         return self.env.make_child_frame(self.formals, args)
         print(args)
         print(env)
@@ -252,7 +251,6 @@ def do_define_form(expressions, env):
     elif isinstance(target, Pair) and scheme_symbolp(target.first):
         # BEGIN PROBLEM 10
         "*** YOUR CODE HERE ***"
-        # print(Pair(target.second, expressions.second))
         env.define(target.first, do_lambda_form((Pair(target.second, expressions.second)), env))
         return target.first
         # END PROBLEM 10
@@ -358,26 +356,18 @@ def make_let_frame(bindings, env):
     if not scheme_listp(bindings):
         raise SchemeError('bad bindings list in let form')
     # BEGIN PROBLEM 15
-    #print(bindings)
-    #print(env)
     formals = nil
     vals = nil
-    # for every assignment in the let statement
     while bindings is not nil:
         currentBinding = bindings.first
-        # make sure that the let binding is
         check_form(currentBinding, 2, 2.5)
         variable = currentBinding.first
         value = scheme_eval(currentBinding.second.first, env)
         formals = Pair(variable, formals)
         vals = Pair(value, vals)
-
-        # increment
         bindings = bindings.second
-
     check_formals(formals)
     return env.make_child_frame(formals, vals)
-
     # END PROBLEM 15
 
 def do_define_macro(expressions, env):

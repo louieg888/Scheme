@@ -24,11 +24,8 @@
 (define (enumerate s)
   ; BEGIN PROBLEM 17
   (define (enumerate_helper start s) 
-    ; if s is nul 
     (if (null? s)
-      ; return nil
       nil 
-      ; else enumerate that value and the rest
       (append (list (list start (car s))) (enumerate_helper (+ start 1) (cdr s)))
     ) 
   ) 
@@ -40,32 +37,9 @@
 ;; List all ways to make change for TOTAL with DENOMS
 (define (list-change total denoms)
   ; BEGIN PROBLEM 18
-  (cond
-   ((= a 0) nil)
-   (else (append (cons-all total)))
-   )
-;  (cond 
-;    ; if total == 0
-;    ((= total 0) (list (list (car denoms))))
-;    ; (append does nothing 
-;    ((< total 0) nil) 
-;    ; if the total is still greater than 0 and you have no denoms left, no combos
-;    ((null? denoms) nil) 
-;    ; if the current denom is bigger than total, then call helper on rest. 
-;    ((> (car denoms) total) (list-change total (cdr denoms)))
-;    ; if the first denom is equal to the total, 
-;    ; ((= (car denoms) total) )
-;    ; this means you have combos. 
-;    (else 
-;      (append   
-;        (cons-all (car denoms) (list-change (- total (car denoms)) denoms))
-;        (list-change total (cdr denoms))
-;      )
-;    )
-   
 )
-;  ; END PROBLEM 18
-;
+  ; END PROBLEM 18
+
 ;; Problem 19
 ;; Returns a function that checks if an expression is the special form FORM
 (define (check-special form)
@@ -96,7 +70,7 @@
            ; BEGIN PROBLEM 19
            (cond
 	    ((null? (cdr (cddr expr))) (cons form (cons params (cons (car body) nil))))
-	    (else  (cons form (cons params (cons (car body) (cons (let-to-lambda (cadr (cddr expr))) nil)))))
+	    (else  (cons form (cons params (cons (car body) (cons (let-to-lambda (car (cdr (cddr expr)))) nil)))))
 	    )
            ; END PROBLEM 19
            ))
