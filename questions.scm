@@ -6,7 +6,8 @@
 ; Some utility functions that you may find useful to implement.
 
 (define (cons-all first rests)
-  'replace-this-line)
+  'replace-this-line
+)
 
 (define (zip pairs)
   'replace-this-line)
@@ -15,8 +16,17 @@
 ;; Returns a list of two-element lists
 (define (enumerate s)
   ; BEGIN PROBLEM 17
-  'replace-this-line
-  )
+  (define (enumerateHelper start s) 
+    ; if s is nul 
+    (if (null? s)
+      ; return nil
+      nil 
+      ; else enumerate that value and the rest
+      (append (list (list start (car s))) (enumerateHelper (+ start 1) (cdr s))) 
+    ) 
+  ) 
+  (enumerateHelper 0 s) 
+)
   ; END PROBLEM 17
 
 ;; Problem 18
