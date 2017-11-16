@@ -11,11 +11,7 @@
   ) 
   (if (null? rests) 
     nil 
-<<<<<<< HEAD
     (append (list (addFirst first (car rests))) (cons-all first (cdr rests)))
-=======
-    (append (list (add_first first (car rests))) (cons-all first (cdr rests))))
->>>>>>> e7b6917a0e0049e58baaaa9844d88f4a011ee69d
   )
 )
 
@@ -44,7 +40,6 @@
 ;; List all ways to make change for TOTAL with DENOMS
 (define (list-change total denoms)
   ; BEGIN PROBLEM 18
-<<<<<<< HEAD
   (define (helper tot den) 
     (cond 
       ; if total == 0
@@ -101,11 +96,6 @@
 ;    (if (null? lst) 
 ;      nil
 ;      (append (list (proc (car lst))) (listMap proc  (cdr lst))) 
-=======
-  (cond
-   ((= a 0) nil)
-   (else (append (cons-all total)))
-   )
 ;  (cond 
 ;    ; if total == 0
 ;    ((= total 0) (list (list (car denoms))))
@@ -123,7 +113,6 @@
 ;        (cons-all (car denoms) (list-change (- total (car denoms)) denoms))
 ;        (list-change total (cdr denoms))
 ;      )
->>>>>>> e7b6917a0e0049e58baaaa9844d88f4a011ee69d
 ;    )
 ;  ) 
   ; (listMap removeLast output)
