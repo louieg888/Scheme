@@ -25,6 +25,128 @@ x
 (f 3)
 ; expect 303
 
+(define f3 (lambda (x) (+ x x)))
+; expect f3
+
+(define x 20)
+; expect x
+
+(define y 40) 
+; expect y
+
+(define z (+ x y))
+; expect z
+
+z
+; expect 60
+
+(define a z) 
+; expect a
+
+(* 2 a)
+; expect 120
+
+(f3 20) 
+; expect 40 
+
+(quote sup)
+; expect sup
+
+(quote (5 . 3))
+; expect (5 . 3)
+
+'sup 
+; expect sup
+
+'(1 . nil) 
+; expect (1) 
+
+(begin (display 4) (display 2))
+; expect 42
+
+(lambda (a b) (* a (+ a b)))
+; expect (lambda (a b) (* a (+ a b)))
+
+(lambda (a b c d e f) (+ a b c d e f))
+; expect (lambda (a b c d e f) (+ a b c d e f))
+
+(define f (lambda (x) x))
+; expect f
+
+(f 40)
+; expect 40
+
+(define (outerScope)
+  (define a 10)
+  (define (innerScope)
+    (define a 20)
+    a
+  ) 
+  (innerScope) 
+) 
+; expect 20
+
+
+(define (outerScope)
+  (define a 10)
+  (define (innerScope)
+    (define a 20)
+    a
+  ) 
+  a
+) 
+; expect 10
+
+(and)
+; expect True
+
+(and 0) 
+; expect True
+ 
+(and 0 False)
+; expect False
+
+(and True True True True False) 
+; expect False
+
+(and '(1 2) True False)
+; expect False
+
+(and '(1 2) True)
+; expect True
+
+(or '(3 4))
+; expect True
+
+(or) 
+; expect False
+
+(or 1) 
+; expect 1
+
+(or False) 
+; expect False
+
+(or 1 4 6 7 1 (list 2 5) '(1 . 4) False)
+; expect 1
+
+(define (largerOrFirst a b) 
+  (cond 
+    ((> a b) a)
+    ((< a b) b)
+    ((= a b) a)
+  )
+) 
+; expect largerOrFirst
+
+(largerOrFirst 1 5)
+; expect 5
+
+(largerOrFirst 5 1)
+; expect 5
+
+(largerOrFirst 3 3)
+; expect 3
 
 ;;; These are examples from several sections of "The Structure
 ;;; and Interpretation of Computer Programs" by Abelson and Sussman.
