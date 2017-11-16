@@ -4,7 +4,6 @@
     <list default="true" id="921f2521-0eed-4054-89de-a6c6c097a5c4" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.ok_history" afterPath="$PROJECT_DIR$/.ok_history" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/questions.scm" afterPath="$PROJECT_DIR$/questions.scm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scheme.py" afterPath="$PROJECT_DIR$/scheme.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,8 +37,8 @@
       <file leaf-file-name="scheme_reader.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scheme_reader.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="111" column="15" lean-forward="false" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="15" />
+            <state relative-caret-position="418">
+              <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -332,8 +331,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scheme_reader.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="111" column="15" lean-forward="false" selection-start-line="111" selection-start-column="10" selection-end-line="111" selection-end-column="15" />
+        <state relative-caret-position="418">
+          <caret line="120" column="32" lean-forward="false" selection-start-line="120" selection-start-column="32" selection-end-line="120" selection-end-column="32" />
           <folding />
         </state>
       </provider>
