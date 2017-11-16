@@ -6,7 +6,7 @@
 ; Some utility functions that you may find useful to implement.
 
 (define (cons-all first rests)
-  (define (add_first first rst) 
+  (define (addFirst first rst) 
     (append (list first) rst)
   ) 
   (if (null? rests) 
@@ -38,6 +38,15 @@
 
 ;; Problem 18
 ;; List all ways to make change for TOTAL with DENOMS
+
+
+(define (removeLast lst) 
+  (if (equal? '() (cdr lst)) 
+    '() 
+    (cons (car lst) (removeLast (cdr lst))) 
+  )
+) 
+
 (define (list-change total denoms)
   ; BEGIN PROBLEM 18
   (define (helper tot den) 
@@ -49,7 +58,7 @@
       ; if the total is still greater than 0 and you have no denoms left, no combos
       ((null? den) nil) 
       ; if the current denom is bigger than total, then call helper on rest. 
-      ((> (car den) tot) (list-change tot (cdr den)))
+      ((> (car den) tot) (helper tot (cdr den)))
       ; if the first denom is equal to the total, 
       ; ((= (car denoms) total) )
       ; this means you have combos. 
@@ -61,66 +70,10 @@
       )
     )
   )
-  (define output (helper total denoms))
-  (define (removeLast lst) 
-    ;(display lst)
-    ;(newline)
-    (if (eq? '() (cdr lst)) 
-      '() 
-      (cons (car lst) (removeLast (cdr lst))) 
-    )
-  ) 
-  (display output)
-
-  (define first (list 10 10 10 10 10 10))
-  ; (display first)
-  (newline)
-  (define second (cadr output))
-  ; (display second) 
-  (newline)
-  
-  ;(display (removeLast first))
-;  (display (cdr first))
-;  (newline)
-;  (display (car first))
-;  (newline)
-;  (display (car (cdr first)))
-;  (newline)
-;  (display (cdr (cdr first)))
-;  (display (eq? '() (cddr first)))
-;  (newline)
-;  (display first)
-;  (removeLast '(5 5 5))
-;  (removeLast '(10 10))
-;  (define (listMap proc lst) 
-;    (if (null? lst) 
-;      nil
-;      (append (list (proc (car lst))) (listMap proc  (cdr lst))) 
-;  (cond 
-;    ; if total == 0
-;    ((= total 0) (list (list (car denoms))))
-;    ; (append does nothing 
-;    ((< total 0) nil) 
-;    ; if the total is still greater than 0 and you have no denoms left, no combos
-;    ((null? denoms) nil) 
-;    ; if the current denom is bigger than total, then call helper on rest. 
-;    ((> (car denoms) total) (list-change total (cdr denoms)))
-;    ; if the first denom is equal to the total, 
-;    ; ((= (car denoms) total) )
-;    ; this means you have combos. 
-;    (else 
-;      (append   
-;        (cons-all (car denoms) (list-change (- total (car denoms)) denoms))
-;        (list-change total (cdr denoms))
-;      )
-;    )
-;  ) 
-  ; (listMap removeLast output)
-  ; (map removeLast output)
-  ; (listMap (lambda (lt) (append lt (list 1))) '((1 2) (1 3) (4 5)))
+  (map removeLast (helper total denoms))
+  ; (define output (helper total denoms))
+  ; (display output)
 )
-  
-
 ; END PROBLEM 18
 ;
 ;; Problem 19
