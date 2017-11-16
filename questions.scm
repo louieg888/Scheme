@@ -45,12 +45,6 @@
 ) 
 
 (define (list-change total denoms)
-  ; BEGIN PROBLEM 18
-<<<<<<< HEAD
-)
-  ; END PROBLEM 18
-
-=======
   (define (helper tot den) 
     (cond 
       ; if total == 0
@@ -77,8 +71,8 @@
   ; (display output)
 )
 ; END PROBLEM 18
-;
->>>>>>> 84ba6c09c09074aee98f2382ad11ef5819e1a63f
+					
+
 ;; Problem 19
 ;; Returns a function that checks if an expression is the special form FORM
 (define (check-special form)
