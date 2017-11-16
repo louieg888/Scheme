@@ -10,6 +10,22 @@
 ;;; *** Add more of your own here! ***
 ;;; **********************************
 
+(define x 100)
+; expect x
+
+x
+; expect 100
+
+(let ((x 3) (y 2)) (* x y))
+; expect 6
+
+(define (f x2) (+ (* 3 x) x2))
+; expect f
+
+(f 3)
+; expect 303
+
+
 ;;; These are examples from several sections of "The Structure
 ;;; and Interpretation of Computer Programs" by Abelson and Sussman.
 
