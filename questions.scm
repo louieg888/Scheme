@@ -11,7 +11,7 @@
   ) 
   (if (null? rests) 
     nil 
-    (append (addFirst first (car rests)) (cons-all first (cdr rests)))
+    (append (list (addFirst first (car rests))) (cons-all first (cdr rests))))
   )
 )
 
@@ -39,28 +39,29 @@
 ;; List all ways to make change for TOTAL with DENOMS
 (define (list-change total denoms)
   ; BEGIN PROBLEM 18
-  (cond 
-    ; if total == 0
-    ((= total 0) (list (list (car denoms))))
-    ; (append does nothing 
-    ((< total 0) nil) 
-    ; if the total is still greater than 0 and you have no denoms left, no combos
-    ((null? denoms) nil) 
-    ; if the current denom is bigger than total, then call helper on rest. 
-    ((> (car denoms) total) (list-change total (cdr denoms)))
-    ; if the first denom is equal to the total, 
-    ; ((= (car denoms) total) )
-    ; this means you have combos. 
-    (else 
-      (append   
-        (cons-all (car denoms) (list-change (- total (car denoms)) denoms))
-        (list-change total (cdr denoms))
-      )
-    )
-  ) 
+  (cons-all 1 '((2 4) (1 5) (6 3)))
+;  (cond 
+;    ; if total == 0
+;    ((= total 0) (list (list (car denoms))))
+;    ; (append does nothing 
+;    ((< total 0) nil) 
+;    ; if the total is still greater than 0 and you have no denoms left, no combos
+;    ((null? denoms) nil) 
+;    ; if the current denom is bigger than total, then call helper on rest. 
+;    ((> (car denoms) total) (list-change total (cdr denoms)))
+;    ; if the first denom is equal to the total, 
+;    ; ((= (car denoms) total) )
+;    ; this means you have combos. 
+;    (else 
+;      (append   
+;        (cons-all (car denoms) (list-change (- total (car denoms)) denoms))
+;        (list-change total (cdr denoms))
+;      )
+;    )
+   
 )
-  ; END PROBLEM 18
-
+;  ; END PROBLEM 18
+;
 ;; Problem 19
 ;; Returns a function that checks if an expression is the special form FORM
 (define (check-special form)
