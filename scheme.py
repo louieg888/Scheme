@@ -218,7 +218,7 @@ class MacroProcedure(LambdaProcedure):
         actual-parameter expressions and ENV as the environment in which the
         resulting expanded expression is to be evaluated."""
         # BEGIN Problem 21
-        "*** YOUR CODE HERE ***"
+        operands.map(lambda operand: complete_eval(operand))
         # END Problem 21
 
 def add_primitives(frame, funcs_and_names):
@@ -305,6 +305,7 @@ def do_and_form(expressions, env):
 def do_or_form(expressions, env):
     """Evaluate a (short-circuited) or form."""
     # BEGIN PROBLEM 13
+    """
     if len(expressions) == 0:
         return False
     while expressions is not nil:
@@ -314,6 +315,15 @@ def do_or_form(expressions, env):
             return evaled_expr
         expressions = expressions.second
     return False
+    """
+    if len(expressions) == 0:
+        return False
+    elif len(expressions) == 1:
+        return scheme_eval(expressions.first, env, True)
+    elif scheme_truep(scheme_eval(expressions.first, env)):
+        return scheme_eval(expressions.first, env)
+    else:
+        return do_or_form(expressions.second, env)
     # END PROBLEM 13
 
 def do_cond_form(expressions, env):
@@ -329,16 +339,22 @@ def do_cond_form(expressions, env):
             test = scheme_eval(clause.first, env)
         if scheme_truep(test):
             # BEGIN PROBLEM 14
-            "*** YOUR CODE HERE ***"
             clause_second = clause.second
             if clause_second is nil:
                 return test
+            else:
+                return eval_all(clause_second, env)
+            """
             elif len(clause_second) > 1:
                 return eval_all(clause_second, env)
             elif len(clause_second) == 1:
                 return scheme_eval(clause_second.first, env)
+            """
+
+            """
             else:
                 return None
+            """
             # END PROBLEM 14
         expressions = expressions.second
 
@@ -373,7 +389,20 @@ def make_let_frame(bindings, env):
 def do_define_macro(expressions, env):
     """Evaluate a define-macro form."""
     # BEGIN Problem 21
-    "*** YOUR CODE HERE ***"
+    # name = expressions.first.first
+    # print(expressions.first.first.__repr__())
+    # print(expressions.__repr__())
+    if not isinstance(expressions.first, Pair):
+        raise SchemeError
+
+    formals = expressions.first.second
+    body = expressions.second
+    # print("formals: " + formals.__repr__())
+    # print("body: " + body.__repr__())
+
+    newMacro = MacroProcedure(formals, body, env)
+    # return newMacro
+    return expressions.first.first
     # END Problem 21
 
 
@@ -540,7 +569,6 @@ def scheme_optimized_eval(expr, env, tail=False):
 
     if tail:
         # BEGIN PROBLEM 20
-        "*** YOUR CODE HERE ***"
         return Thunk(expr, env)
         # END PROBLEM 20
     else:
@@ -556,18 +584,17 @@ def scheme_optimized_eval(expr, env, tail=False):
             result = SPECIAL_FORMS[first](rest, env)
         else:
             # BEGIN PROBLEM 20
-            "*** YOUR CODE HERE ***"
             operator = scheme_eval(first, env)
             check_procedure(operator)
-            args = rest.map(lambda operand: scheme_eval(operand, env))
-            return scheme_apply(operator, args, env)
+            # args = rest.map(lambda operand: scheme_eval(operand, env))
+            result = operator.eval_call(rest, env)
             # END PROBLEM 20
     return result
 
 ################################################################
 # Uncomment the following line to apply tail call optimization #
 ################################################################
-#  scheme_eval = scheme_optimized_eval
+scheme_eval = scheme_optimized_eval
 
 
 ####################
