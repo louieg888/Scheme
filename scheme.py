@@ -55,7 +55,7 @@ def eval_all(expressions, env):
         return None
     while expressions is not nil:
         if expressions.second is nil:
-            return scheme_eval(expressions.first, env)
+            return scheme_eval(expressions.first, env, True)
         scheme_eval(expressions.first, env)
         expressions = expressions.second
     # END PROBLEM 8
@@ -285,9 +285,9 @@ def do_if_form(expressions, env):
     """Evaluate an if form."""
     check_form(expressions, 2, 3)
     if scheme_truep(scheme_eval(expressions.first, env)):
-        return scheme_eval(expressions.second.first, env)
+        return scheme_eval(expressions.second.first, env, True)
     elif len(expressions) == 3:
-        return scheme_eval(expressions.second.second.first, env)
+        return scheme_eval(expressions.second.second.first, env, True)
 
 def do_and_form(expressions, env):
     """Evaluate a (short-circuited) and form."""
@@ -295,7 +295,7 @@ def do_and_form(expressions, env):
     if len(expressions) == 0:
         return True
     elif len(expressions) == 1:
-        return scheme_eval(expressions.first, env)
+        return scheme_eval(expressions.first, env, True)
     elif scheme_falsep(scheme_eval(expressions.first, env)):
         return False
     else:
@@ -309,7 +309,7 @@ def do_or_form(expressions, env):
         return False
     while expressions is not nil:
         expr = expressions.first
-        evaled_expr = scheme_eval(expr, env)
+        evaled_expr = scheme_eval(expr, env, True)
         if scheme_truep(evaled_expr):
             return evaled_expr
         expressions = expressions.second
@@ -567,7 +567,7 @@ def scheme_optimized_eval(expr, env, tail=False):
 ################################################################
 # Uncomment the following line to apply tail call optimization #
 ################################################################
-# scheme_eval = scheme_optimized_eval
+scheme_eval = scheme_optimized_eval
 
 
 ####################
